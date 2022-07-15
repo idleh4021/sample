@@ -1,15 +1,28 @@
 "use strict";
 
-const hello = (req,res)=>{
-    res.render("home/index");
+const output={
+
+    hello : (req,res)=>{
+        res.render("home/index");
+    },
+    
+    
+    login :(req,res)=>{
+        res.render("home/login");
+    },
+}
+
+const process ={
+
+    login : (req,res)=>{
+        console.log("ctrl");
+        console.log(req.body);
+    },
 };
 
 
-const login=(req,res)=>{
-    res.render("home/login");
-}
 
 module.exports={        // 본 소스 파일의 function을 export 
-    hello,
-    login,
+    output,
+    process,
 };
