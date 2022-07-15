@@ -1,5 +1,11 @@
 "use strict";
 
+
+const users ={
+    id:["idleh","user","admin"],
+    pwd :["1234","444","567"],
+};
+
 const output={
 
     hello : (req,res)=>{
@@ -10,13 +16,28 @@ const output={
     login :(req,res)=>{
         res.render("home/login");
     },
-}
+};
 
 const process ={
 
     login : (req,res)=>{
-        console.log("ctrl");
-        console.log(req.body);
+       const id = req.body.id,
+       pwd = req.body.pwd;
+
+       if(users.id.includes(id)){
+        const idx = users.id.indexOf(id);
+        if(users.pwd[idx]===pwd){
+            return res.json({
+                success : true,
+            })
+        }
+
+        return res.json({
+            success : false,
+            msg : "로그인에 실패 했습니다.",
+        });
+
+       }
     },
 };
 
